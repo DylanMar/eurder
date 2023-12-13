@@ -1,5 +1,7 @@
 package com.switchfully.eurder.dto;
 
+import java.util.List;
+
 public class CreateItemDto {
 
     private final String name;
