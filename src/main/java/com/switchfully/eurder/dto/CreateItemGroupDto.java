@@ -1,24 +1,28 @@
 package com.switchfully.eurder.dto;
 
 
-import java.util.UUID;
-
 public class CreateItemGroupDto {
 
-    private final UUID itemId;
+    private final Long itemId;
     private final int amount;
+    private final Long orderId;
 
-    public CreateItemGroupDto(String itemId, int amount) {
-        this.itemId = UUID.fromString(itemId);
+    public CreateItemGroupDto(Long itemId, int amount, Long orderId) {
+        this.itemId = itemId;
         this.amount = amount;
+        this.orderId = orderId;
     }
 
-    public UUID getItemId() {
+    public Long getItemId() {
         return itemId;
     }
 
     public int getAmount() {
         return amount;
+    }
+
+    public Long getOrderId() {
+        return orderId;
     }
 
 }

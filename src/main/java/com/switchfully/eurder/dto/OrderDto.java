@@ -1,18 +1,23 @@
 package com.switchfully.eurder.dto;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class OrderDto {
 
+    private final Long orderId;
     private final List<ItemGroupDto> itemGroupDtoList;
     private final double totalPrice;
-    private final CustomerDto customerDto;
+    private final UserDto userDto;
 
-    public OrderDto(List<ItemGroupDto> itemGroupDtoList, double totalPrice, CustomerDto customerDto) {
+    public OrderDto(Long orderId, List<ItemGroupDto> itemGroupDtoList, double totalPrice, UserDto userDto) {
+        this.orderId = orderId;
         this.itemGroupDtoList = itemGroupDtoList;
         this.totalPrice = totalPrice;
-        this.customerDto = customerDto;
+        this.userDto = userDto;
+    }
+
+    public Long getOrderId() {
+        return orderId;
     }
 
     public List<ItemGroupDto> getItemGroupDtoList() {
@@ -23,8 +28,8 @@ public class OrderDto {
         return totalPrice;
     }
 
-    public CustomerDto getCustomerDto() {
-        return this.customerDto;
+    public UserDto getCustomerDto() {
+        return userDto;
     }
 
 }

@@ -1,36 +1,65 @@
 package com.switchfully.eurder.entity;
 
-import java.util.List;
-import java.util.UUID;
+import jakarta.persistence.*;
 
+import java.util.List;
+
+@Entity
+@Table(name = "orders")
 public class Order {
 
-    private final UUID orderId;
-    private final List<ItemGroup> itemGroups;
-    private final double totalPrice;
-    private final User customer;
+    @Id
+    @Column(name = "order_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long orderId;
 
-    public Order(List<ItemGroup> itemGroups, User user) {
-        this.orderId = UUID.randomUUID();
+    @Column(name = "total_price")
+    private double totalPrice;
+
+    @OneToMany(mappedBy = "order")
+    private List<ItemGroup> itemGroups;
+
+    @OneToOne
+    private User user;
+
+    public Order() {}
+
+    public Order(double totalPrice, List<ItemGroup> itemGroups, User user) {
+        this.totalPrice = totalPrice;
         this.itemGroups = itemGroups;
-        this.totalPrice = itemGroups.stream().mapToDouble(ItemGroup::getTotalPrice).sum();
-        this.customer = user;
+        this.user = user;
     }
 
-    public UUID getId() {
+    public Long getOrderId() {
         return orderId;
     }
 
-    public List<ItemGroup> getItemGroups() {
-        return itemGroups;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     public double getTotalPrice() {
         return totalPrice;
     }
 
-    public User getCustomer() {
-        return customer;
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public List<ItemGroup> getItemGroups() {
+        return itemGroups;
+    }
+
+    public void setItemGroups(List<ItemGroup> itemGroups) {
+        this.itemGroups = itemGroups;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }

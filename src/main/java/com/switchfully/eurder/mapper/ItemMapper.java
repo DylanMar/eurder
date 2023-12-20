@@ -1,26 +1,31 @@
 package com.switchfully.eurder.mapper;
 
-import com.switchfully.eurder.entity.Item;
 import com.switchfully.eurder.dto.CreateItemDto;
 import com.switchfully.eurder.dto.ItemDto;
+import com.switchfully.eurder.entity.Item;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ItemMapper {
 
+
     public Item mapCreateItemDtoToItem(CreateItemDto createItemDto) {
-        return new Item(createItemDto.getName(),
+        return new Item(
+                createItemDto.getName(),
                 createItemDto.getDescription(),
                 createItemDto.getPrice(),
-                createItemDto.getAmountInStock());
+                createItemDto.getAmountInStock()
+        );
     }
 
-    public ItemDto MapItemToItemDto(Item item) {
-        return new ItemDto(item.getId(),
+    public ItemDto mapItemToItemDto(Item item) {
+        return new ItemDto(
+                item.getItemId(),
                 item.getName(),
                 item.getDescription(),
                 item.getPrice(),
-                item.getAmountInStock());
+                item.getAmountInStock()
+        );
     }
 
 }

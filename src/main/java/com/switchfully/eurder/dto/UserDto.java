@@ -1,19 +1,16 @@
 package com.switchfully.eurder.dto;
 
-import java.util.Objects;
-import java.util.UUID;
+public class UserDto {
 
-public class CustomerDto {
-
-    private final UUID id;
+    private final Long customerId;
     private final String firstName;
     private final String lastName;
     private final String email;
     private final String address;
     private final String phoneNumber;
 
-    public CustomerDto(UUID id, String firstName, String lastName, String email, String address, String phoneNumber) {
-        this.id = id;
+    public UserDto(Long customerId, String firstName, String lastName, String email, String address, String phoneNumber) {
+        this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -21,8 +18,8 @@ public class CustomerDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public UUID getId() {
-        return this.id;
+    public Long getCustomerId() {
+        return this.customerId;
     }
 
     public String getFirstName() {
@@ -43,14 +40,6 @@ public class CustomerDto {
 
     public String getPhoneNumber() {
         return phoneNumber;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CustomerDto that = (CustomerDto) o;
-        return Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(email, that.email) && Objects.equals(address, that.address) && Objects.equals(phoneNumber, that.phoneNumber);
     }
 
 }

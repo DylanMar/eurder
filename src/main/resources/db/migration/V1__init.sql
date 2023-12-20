@@ -1,6 +1,31 @@
-CREATE SCHEMA eurder;
+CREATE SCHEMA IF NOT EXISTS eurder;
 
 SET SEARCH_PATH TO eurder;
+
+CREATE TABLE roles(
+    role_id INT PRIMARY KEY,
+    role VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE users(
+    user_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(255) NOT NULL,
+    role_fk INT NOT NULL,
+
+    CONSTRAINT role_fk FOREIGN KEY (role_fk) references roles (role_id)
+);
+
+CREATE TABLE orders(
+    order_id SERIAL PRIMARY KEY,
+    total_price FLOAT NOT NULL,
+    user_id_fk INT NOT NULL,
+
+    CONSTRAINT user_id_fk FOREIGN KEY (user_id_fk) references users (user_id)
+);
 
 CREATE TABLE items(
     item_id SERIAL PRIMARY KEY,
@@ -16,43 +41,12 @@ CREATE TABLE item_groups(
     amount INT NOT NULL,
     shipping_date DATE NOT NULL,
     total_price FLOAT NOT NULL,
+    order_id_fk INT NOT NULL,
 
-    CONSTRAINT item_id_fk FOREIGN KEY (item_id_fk) references items (item_id)
-);
-
-CREATE TABLE orders(
-    order_id SERIAL PRIMARY KEY,
-    item_groups_orders_fk INT NOT NULL,
-    total_price FLOAT NOT NULL,
-    customer_id_fk INT NOT NULL,
-
-    CONSTRAINT item_groups_orders_fk FOREIGN KEY (item_groups_orders_fk) references item_groups_orders (item_groups_orders_id),
-    CONSTRAINT customer_id_fk FOREIGN KEY (customer_id_fk) references customers (customer_id)
+    CONSTRAINT item_id_fk FOREIGN KEY (item_id_fk) references items (item_id),
+    CONSTRAINT order_id_fk FOREIGN KEY (order_id_fk) references orders (order_id)
 );
 
 
-CREATE TABLE item_groups_orders(
-    item_group_id_fk INTEGER REFERENCES item_groups(item_group_id),
-    student_id_fk INTEGER REFERENCES orders(order_id),
-
-    CONSTRAINT item_groups_orders_id PRIMARY KEY(item_group_id_fk, student_id_fk)
-);
 
 
-UUID orderId;
-List<ItemGroup> itemGroups;
-double totalPrice;
-User customer;
-
-
-UUID id;
-String firstName;
-String lastName;
-String email;
-String address;
-String phoneNumber;
-Role role;
-
-
-ADMIN,
-CUSTOMER

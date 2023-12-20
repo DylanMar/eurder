@@ -27,7 +27,7 @@ public class OrderController {
         if (!authorizationService.isCustomer(authorization)) {
             throw new AuthorizationException("You are not authorized for this action");
         }
-        return orderService.createOrder(createOrderDto, authorizationService.getUser(authorization));
+        return orderService.createOrder(createOrderDto);
     }
 
 }

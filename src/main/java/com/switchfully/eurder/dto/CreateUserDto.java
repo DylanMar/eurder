@@ -2,7 +2,7 @@ package com.switchfully.eurder.dto;
 
 import com.switchfully.eurder.entity.Role;
 
-public class CreateCustomerDto {
+public class CreateUserDto {
 
     private final String firstName;
     private final String lastName;
@@ -11,7 +11,7 @@ public class CreateCustomerDto {
     private final String phoneNumber;
     private final Role role;
 
-    public CreateCustomerDto(String firstName, String lastName, String email, String address, String phoneNumber) {
+    public CreateUserDto(String firstName, String lastName, String email, String address, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

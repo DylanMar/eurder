@@ -1,28 +1,26 @@
 package com.switchfully.eurder.dto;
 
-
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class ItemGroupDto {
 
-    private final UUID itemId;
-    private final int amount;
+    private final Long itemGroupId;
+    private final double amount;
     private final LocalDate shippingDate;
     private final double totalPrice;
 
-    public ItemGroupDto(UUID itemId, int amount, LocalDate shippingDate, double totalPrice) {
-        this.itemId = itemId;
+    public ItemGroupDto(Long itemGroupId, double amount, LocalDate shippingDate, double totalPrice) {
+        this.itemGroupId = itemGroupId;
         this.amount = amount;
         this.shippingDate = shippingDate;
         this.totalPrice = totalPrice;
     }
 
-    public UUID getItemId() {
-        return itemId;
+    public Long getItemGroupId() {
+        return itemGroupId;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 

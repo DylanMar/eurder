@@ -5,9 +5,11 @@ import com.switchfully.eurder.dto.CreateItemDto;
 import com.switchfully.eurder.dto.ItemDto;
 import com.switchfully.eurder.mapper.ItemMapper;
 import com.switchfully.eurder.repository.ItemRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class ItemService {
 
     private final ItemRepository itemRepository;
@@ -20,13 +22,8 @@ public class ItemService {
     }
 
     public ItemDto createItem(CreateItemDto createItemDto) {
-        try {
-            Item item = itemMapper.mapCreateItemDtoToItem(createItemDto);
-            Item addedItem = itemRepository.addItem(item);
-            return itemMapper.MapItemToItemDto(addedItem);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(e.getMessage());
-        }
+        Item item = itemMapper.mapCreateItemDtoToItem(createItemDto);
+        return itemMapper.mapItemToItemDto(itemRepository.save(item));
     }
 
 }

@@ -1,8 +1,9 @@
 package com.switchfully.eurder.service;
 
+import com.switchfully.eurder.dto.CreateUserDto;
 import com.switchfully.eurder.entity.User;
-import com.switchfully.eurder.dto.CreateCustomerDto;
-import com.switchfully.eurder.dto.CustomerDto;
+import com.switchfully.eurder.dto.UserDto;
+import com.switchfully.eurder.exception.NotFoundException;
 import com.switchfully.eurder.mapper.UserMapper;
 import com.switchfully.eurder.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -21,25 +22,23 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public CustomerDto createCustomer(CreateCustomerDto createCustomerDto) {
-        try {
-            User user = userMapper.mapCreateCustomerDtoToUser(createCustomerDto);
-            User customer = userRepository.addUser(user);
-            return userMapper.mapUserToCustomerDto(customer);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(e.getMessage());
-        }
+    public UserDto createUser(CreateUserDto createUserDto) {
+        User user = userMapper.mapCreateUserDtoToUser(createUserDto);
+        return userMapper.mapUserToUserDto(userRepository.save(user));
     }
 
-    public List<CustomerDto> getAllCustomers() {
-        return userRepository.getAllCustomers()
+    public List<UserDto> getAllUsers() {
+        return userRepository
+                .findAll()
                 .stream()
-                .map(userMapper::mapUserToCustomerDto)
+                .map(userMapper::mapUserToUserDto)
                 .toList();
     }
 
-    public CustomerDto getCustomerById(String id) {
-        return userMapper.mapUserToCustomerDto(userRepository.getUserById(id));
+    public UserDto getUserById(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("User id not found"));
+        return userMapper.mapUserToUserDto(user);
     }
 
 }

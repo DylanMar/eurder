@@ -2,6 +2,7 @@ package com.switchfully.eurder.service;
 
 import com.switchfully.eurder.entity.Role;
 import com.switchfully.eurder.entity.User;
+import com.switchfully.eurder.exception.NotFoundException;
 import com.switchfully.eurder.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,10 @@ public class AuthorizationService {
         String authenticationAsString = new String(authenticationDecoded);
         String username = authenticationAsString.split(":")[0];
 
-        return userRepository.getUserById(username);
+        User user = userRepository.findById(Long.valueOf(username))
+                .orElseThrow(() -> new NotFoundException("User id not found"));
+
+        return user;
     }
 
     public boolean isAdmin(String authorization) {
