@@ -1,12 +1,11 @@
 package com.switchfully.eurder.service;
 
-import com.switchfully.eurder.domain.Role;
-import com.switchfully.eurder.domain.User;
+import com.switchfully.eurder.entity.Role;
+import com.switchfully.eurder.entity.User;
 import com.switchfully.eurder.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Base64;
-import java.util.UUID;
 
 @Service
 public class AuthorizationService {

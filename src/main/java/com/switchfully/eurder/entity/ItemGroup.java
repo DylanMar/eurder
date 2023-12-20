@@ -1,4 +1,4 @@
-package com.switchfully.eurder.domain;
+package com.switchfully.eurder.entity;
 
 import java.time.LocalDate;
 import java.util.UUID;

@@ -1,7 +1,5 @@
 package com.switchfully.eurder.dto;
 
-import com.switchfully.eurder.domain.Role;
-
 import java.util.Objects;
 import java.util.UUID;
 

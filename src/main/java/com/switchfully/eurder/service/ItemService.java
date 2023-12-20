@@ -1,6 +1,6 @@
 package com.switchfully.eurder.service;
 
-import com.switchfully.eurder.domain.Item;
+import com.switchfully.eurder.entity.Item;
 import com.switchfully.eurder.dto.CreateItemDto;
 import com.switchfully.eurder.dto.ItemDto;
 import com.switchfully.eurder.mapper.ItemMapper;

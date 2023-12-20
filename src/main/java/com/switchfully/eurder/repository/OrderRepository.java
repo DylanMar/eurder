@@ -1,6 +1,6 @@
 package com.switchfully.eurder.repository;
 
-import com.switchfully.eurder.domain.Order;
+import com.switchfully.eurder.entity.Order;
 import com.switchfully.eurder.exception.NotFoundException;
 import org.springframework.stereotype.Repository;
 

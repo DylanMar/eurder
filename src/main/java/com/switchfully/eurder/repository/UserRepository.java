@@ -1,7 +1,7 @@
 package com.switchfully.eurder.repository;
 
-import com.switchfully.eurder.domain.Role;
-import com.switchfully.eurder.domain.User;
+import com.switchfully.eurder.entity.Role;
+import com.switchfully.eurder.entity.User;
 import com.switchfully.eurder.exception.NotFoundException;
 import org.springframework.stereotype.Repository;
 

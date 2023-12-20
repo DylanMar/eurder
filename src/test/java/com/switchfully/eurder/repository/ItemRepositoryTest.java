@@ -1,6 +1,6 @@
 package com.switchfully.eurder.repository;
 
-import com.switchfully.eurder.domain.Item;
+import com.switchfully.eurder.entity.Item;
 import com.switchfully.eurder.exception.NotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

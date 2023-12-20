@@ -1,6 +1,6 @@
 package com.switchfully.eurder.mapper;
 
-import com.switchfully.eurder.domain.User;
+import com.switchfully.eurder.entity.User;
 import com.switchfully.eurder.dto.CreateCustomerDto;
 import com.switchfully.eurder.dto.CustomerDto;
 import org.springframework.stereotype.Component;

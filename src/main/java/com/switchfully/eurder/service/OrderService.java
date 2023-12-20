@@ -1,9 +1,9 @@
 package com.switchfully.eurder.service;
 
-import com.switchfully.eurder.domain.Item;
-import com.switchfully.eurder.domain.ItemGroup;
-import com.switchfully.eurder.domain.Order;
-import com.switchfully.eurder.domain.User;
+import com.switchfully.eurder.entity.Item;
+import com.switchfully.eurder.entity.ItemGroup;
+import com.switchfully.eurder.entity.Order;
+import com.switchfully.eurder.entity.User;
 import com.switchfully.eurder.dto.CreateOrderDto;
 import com.switchfully.eurder.dto.OrderDto;
 import com.switchfully.eurder.mapper.OrderMapper;

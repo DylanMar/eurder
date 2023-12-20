@@ -1,6 +1,6 @@
 package com.switchfully.eurder.dto;
 
-import com.switchfully.eurder.domain.Role;
+import com.switchfully.eurder.entity.Role;
 
 public class CreateCustomerDto {
 

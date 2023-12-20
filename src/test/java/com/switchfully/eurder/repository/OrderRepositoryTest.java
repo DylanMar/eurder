@@ -1,12 +1,11 @@
 package com.switchfully.eurder.repository;
 
-import com.switchfully.eurder.domain.ItemGroup;
-import com.switchfully.eurder.domain.Order;
-import com.switchfully.eurder.domain.Role;
-import com.switchfully.eurder.domain.User;
+import com.switchfully.eurder.entity.ItemGroup;
+import com.switchfully.eurder.entity.Order;
+import com.switchfully.eurder.entity.Role;
+import com.switchfully.eurder.entity.User;
 import com.switchfully.eurder.exception.NotFoundException;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
