@@ -28,4 +28,9 @@ public class ControllerExceptionHandler {
         response.sendError(NOT_FOUND.value(), e.getMessage());
     }
 
+    @ExceptionHandler(Exception.class)
+    protected void exception(Exception e, HttpServletResponse response) throws IOException {
+        response.sendError(BAD_REQUEST.value(), e.getMessage());
+    }
+
 }

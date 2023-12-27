@@ -35,12 +35,11 @@ public class ItemGroup {
 
     public ItemGroup() {}
 
-    public ItemGroup(Item item, int amount, Order order) {
+    public ItemGroup(Item item, int amount) {
         this.item = item;
         this.amount = amount;
         this.shippingDate = calculateShippingDate(item.getAmountInStock());
         this.totalPrice = calculateTotalPrice(item.getPrice(), amount);
-        this.order = order;
     }
 
     public LocalDate calculateShippingDate(int amount) {

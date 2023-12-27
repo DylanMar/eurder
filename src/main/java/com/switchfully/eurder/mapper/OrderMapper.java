@@ -1,12 +1,10 @@
 package com.switchfully.eurder.mapper;
 
-import com.switchfully.eurder.dto.CreateOrderDto;
-import com.switchfully.eurder.dto.ItemGroupDto;
-import com.switchfully.eurder.dto.OrderDto;
-import com.switchfully.eurder.dto.UserDto;
+import com.switchfully.eurder.dto.*;
 import com.switchfully.eurder.entity.ItemGroup;
 import com.switchfully.eurder.entity.Order;
 import com.switchfully.eurder.entity.User;
+import com.switchfully.eurder.repository.ItemGroupRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,16 +12,17 @@ import java.util.List;
 @Component
 public class OrderMapper {
 
+    private final ItemGroupRepository itemGroupRepository;
     private final ItemGroupMapper itemGroupMapper;
     private final UserMapper userMapper;
 
-
-    public OrderMapper(ItemGroupMapper itemGroupMapper, UserMapper userMapper) {
+    public OrderMapper(ItemGroupRepository itemGroupRepository, ItemGroupMapper itemGroupMapper, UserMapper userMapper) {
+        this.itemGroupRepository = itemGroupRepository;
         this.itemGroupMapper = itemGroupMapper;
         this.userMapper = userMapper;
     }
 
-    public Order mapCreateOrderDtoToOrder(CreateOrderDto createOrderDto) {
+    public Order mapCreateOrderDtoToOrder(CreateOrderDto createOrderDto, User user) {
         List<ItemGroup> itemGroupList = createOrderDto
                 .getCreateItemGroupDtoList()
                 .stream()
@@ -34,20 +33,25 @@ public class OrderMapper {
                 .stream()
                 .mapToDouble(ItemGroup::getTotalPrice)
                 .sum();
+        Order order = new Order(totalPrice, itemGroupList, user.getUserId());
 
-        User user = userMapper.mapCreateUserDtoToUser(createOrderDto.getCreateUserDto());
+        order
+                .getItemGroups()
+                .forEach((itemGroup) -> itemGroup.setOrder(order));
 
-        return new Order(totalPrice, itemGroupList, user);
+        return order;
     }
 
-    public OrderDto mapOrderToOrderDto(Order order) {
+    public OrderDto mapOrderToOrderDto(Order order, User user) {
+        itemGroupRepository.saveAll(order.getItemGroups());
+
         List<ItemGroupDto> itemGroupDtoList = order
                 .getItemGroups()
                 .stream()
                 .map(itemGroupMapper::mapItemGroupToItemGroupDto)
                 .toList();
 
-        UserDto userDto = userMapper.mapUserToUserDto(order.getUser());
+        UserDto userDto = userMapper.mapUserToUserDto(user);
 
         return new OrderDto(
                 order.getOrderId(),
@@ -55,6 +59,24 @@ public class OrderMapper {
                 order.getTotalPrice(),
                 userDto
         );
+    }
+
+    public PreviousOrderDto mapOrderToPreviousOrderDto(Order order) {
+        List<ItemGroupDto> itemGroupDtoList = order
+                .getItemGroups()
+                .stream()
+                .map(itemGroupMapper::mapItemGroupToItemGroupDto)
+                .toList();
+
+        return new PreviousOrderDto(
+                order.getOrderId(),
+                itemGroupDtoList,
+                order.getTotalPrice()
+        );
+    }
+
+    public PreviousOrdersDto mapToPreviousOrdersDto(List<PreviousOrderDto> previousOrderDtoList, double totalPrice) {
+        return new PreviousOrdersDto(previousOrderDtoList, totalPrice);
     }
 
 }

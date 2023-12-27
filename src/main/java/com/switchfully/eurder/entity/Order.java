@@ -19,12 +19,12 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<ItemGroup> itemGroups;
 
-    @OneToOne
-    private User user;
+    @Column(name = "user_id_fk")
+    private long user;
 
     public Order() {}
 
-    public Order(double totalPrice, List<ItemGroup> itemGroups, User user) {
+    public Order(double totalPrice, List<ItemGroup> itemGroups, long user) {
         this.totalPrice = totalPrice;
         this.itemGroups = itemGroups;
         this.user = user;
@@ -54,11 +54,11 @@ public class Order {
         this.itemGroups = itemGroups;
     }
 
-    public User getUser() {
+    public long getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(long user) {
         this.user = user;
     }
 

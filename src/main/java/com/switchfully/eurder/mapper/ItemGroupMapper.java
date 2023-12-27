@@ -24,9 +24,7 @@ public class ItemGroupMapper {
     public ItemGroup mapCreateItemGroupDtoToItemGroup(CreateItemGroupDto createItemGroupDto) {
         Item item = itemRepository.findById(createItemGroupDto.getItemId())
                 .orElseThrow(() -> new NotFoundException("Item id not found"));
-        Order order = orderRepository.findById(createItemGroupDto.getOrderId())
-                .orElseThrow(() -> new NotFoundException("Order id not found"));
-        return new ItemGroup(item, createItemGroupDto.getAmount(), order);
+        return new ItemGroup(item, createItemGroupDto.getAmount());
     }
 
     public ItemGroupDto mapItemGroupToItemGroupDto(ItemGroup itemGroup) {
