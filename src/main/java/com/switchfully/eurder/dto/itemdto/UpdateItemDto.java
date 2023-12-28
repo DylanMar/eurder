@@ -1,4 +1,4 @@
-package com.switchfully.eurder.dto;
+package com.switchfully.eurder.dto.itemdto;
 
 public class UpdateItemDto {
 

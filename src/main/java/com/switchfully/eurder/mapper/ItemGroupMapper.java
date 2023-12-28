@@ -1,10 +1,9 @@
 package com.switchfully.eurder.mapper;
 
-import com.switchfully.eurder.dto.CreateItemGroupDto;
-import com.switchfully.eurder.dto.ItemGroupDto;
+import com.switchfully.eurder.dto.itemgroupdto.CreateItemGroupDto;
+import com.switchfully.eurder.dto.itemgroupdto.ItemGroupDto;
 import com.switchfully.eurder.entity.Item;
 import com.switchfully.eurder.entity.ItemGroup;
-import com.switchfully.eurder.entity.Order;
 import com.switchfully.eurder.exception.NotFoundException;
 import com.switchfully.eurder.repository.ItemRepository;
 import com.switchfully.eurder.repository.OrderRepository;

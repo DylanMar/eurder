@@ -1,19 +1,18 @@
-package com.switchfully.eurder.dto;
+package com.switchfully.eurder.dto.itemdto;
 
-public class ItemDto {
-
+public class ItemResupplyUrgencyDto {
     private final Long itemId;
     private final String name;
     private final String description;
     private final double price;
-    private final int amountInStock;
+    private final ResupplyUrgency resupplyUrgency;
 
-    public ItemDto(Long itemId, String name, String description, double price, int amountInStock) {
+    public ItemResupplyUrgencyDto(Long itemId, String name, String description, double price, ResupplyUrgency resupplyUrgency) {
         this.itemId = itemId;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.amountInStock = amountInStock;
+        this.resupplyUrgency = resupplyUrgency;
     }
 
     public Long getItemId() {
@@ -32,8 +31,8 @@ public class ItemDto {
         return price;
     }
 
-    public int getAmountInStock() {
-        return amountInStock;
+    public ResupplyUrgency getResupplyUrgency() {
+        return resupplyUrgency;
     }
 
 }

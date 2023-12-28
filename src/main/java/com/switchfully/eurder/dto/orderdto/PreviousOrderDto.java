@@ -1,4 +1,6 @@
-package com.switchfully.eurder.dto;
+package com.switchfully.eurder.dto.orderdto;
+
+import com.switchfully.eurder.dto.itemgroupdto.ItemGroupDto;
 
 import java.util.List;
 

@@ -1,6 +1,11 @@
 package com.switchfully.eurder.mapper;
 
-import com.switchfully.eurder.dto.*;
+import com.switchfully.eurder.dto.itemgroupdto.ItemGroupDto;
+import com.switchfully.eurder.dto.orderdto.CreateOrderDto;
+import com.switchfully.eurder.dto.orderdto.OrderDto;
+import com.switchfully.eurder.dto.orderdto.PreviousOrderDto;
+import com.switchfully.eurder.dto.orderdto.PreviousOrdersDto;
+import com.switchfully.eurder.dto.userdto.UserDto;
 import com.switchfully.eurder.entity.ItemGroup;
 import com.switchfully.eurder.entity.Order;
 import com.switchfully.eurder.entity.User;
@@ -33,6 +38,7 @@ public class OrderMapper {
                 .stream()
                 .mapToDouble(ItemGroup::getTotalPrice)
                 .sum();
+
         Order order = new Order(totalPrice, itemGroupList, user.getUserId());
 
         order

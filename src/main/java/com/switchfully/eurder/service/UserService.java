@@ -1,8 +1,8 @@
 package com.switchfully.eurder.service;
 
-import com.switchfully.eurder.dto.CreateUserDto;
+import com.switchfully.eurder.dto.userdto.CreateUserDto;
 import com.switchfully.eurder.entity.User;
-import com.switchfully.eurder.dto.UserDto;
+import com.switchfully.eurder.dto.userdto.UserDto;
 import com.switchfully.eurder.exception.NotFoundException;
 import com.switchfully.eurder.mapper.UserMapper;
 import com.switchfully.eurder.repository.UserRepository;

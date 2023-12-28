@@ -1,16 +1,14 @@
 package com.switchfully.eurder.controller;
 
-import com.switchfully.eurder.dto.CreateOrderDto;
-import com.switchfully.eurder.dto.OrderDto;
-import com.switchfully.eurder.dto.PreviousOrdersDto;
+import com.switchfully.eurder.dto.orderdto.CreateOrderDto;
+import com.switchfully.eurder.dto.orderdto.OrderDto;
+import com.switchfully.eurder.dto.orderdto.PreviousOrdersDto;
 import com.switchfully.eurder.exception.AuthorizationException;
 import com.switchfully.eurder.service.AuthorizationService;
 import com.switchfully.eurder.service.OrderService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(path = "/order")
@@ -31,6 +29,15 @@ public class OrderController {
             throw new AuthorizationException("You are not authorized for this action");
         }
         return orderService.createOrder(createOrderDto, authorization);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(path = "/{id}", produces = "application/json")
+    public OrderDto reOrder(@RequestHeader(HttpHeaders.AUTHORIZATION) String authorization, @PathVariable Long id) {
+        if (!authorizationService.isCustomer(authorization)) {
+            throw new AuthorizationException("You are not authorized for this action");
+        }
+        return orderService.reOrder(id, authorization);
     }
 
     @ResponseStatus(HttpStatus.OK)

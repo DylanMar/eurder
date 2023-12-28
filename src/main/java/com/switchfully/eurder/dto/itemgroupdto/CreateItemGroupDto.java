@@ -1,4 +1,4 @@
-package com.switchfully.eurder.dto;
+package com.switchfully.eurder.dto.itemgroupdto;
 
 
 public class CreateItemGroupDto {

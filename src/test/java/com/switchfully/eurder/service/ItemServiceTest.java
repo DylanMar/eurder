@@ -1,8 +1,8 @@
 //package com.switchfully.eurder.service;
 //
 //import com.switchfully.eurder.entity.Item;
-//import com.switchfully.eurder.dto.CreateItemDto;
-//import com.switchfully.eurder.dto.ItemDto;
+//import com.switchfully.eurder.dto.item.CreateItemDto;
+//import com.switchfully.eurder.dto.item.ItemDto;
 //import com.switchfully.eurder.repository.ItemRepository;
 //import org.junit.jupiter.api.BeforeEach;
 //import org.junit.jupiter.api.Test;

@@ -1,23 +1,25 @@
-package com.switchfully.eurder.dto;
+package com.switchfully.eurder.dto.userdto;
 
-import com.switchfully.eurder.entity.Role;
+public class UserDto {
 
-public class CreateUserDto {
-
+    private final Long customerId;
     private final String firstName;
     private final String lastName;
     private final String email;
     private final String address;
     private final String phoneNumber;
-    private final Role role;
 
-    public CreateUserDto(String firstName, String lastName, String email, String address, String phoneNumber) {
+    public UserDto(Long customerId, String firstName, String lastName, String email, String address, String phoneNumber) {
+        this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.role = Role.CUSTOMER;
+    }
+
+    public Long getCustomerId() {
+        return this.customerId;
     }
 
     public String getFirstName() {
@@ -38,10 +40,6 @@ public class CreateUserDto {
 
     public String getPhoneNumber() {
         return phoneNumber;
-    }
-
-    public Role getRole() {
-        return role;
     }
 
 }

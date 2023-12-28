@@ -1,7 +1,7 @@
 //package com.switchfully.eurder.controller;
 //
 //import com.switchfully.eurder.dto.CreateCustomerDto;
-//import com.switchfully.eurder.dto.UserDto;
+//import com.switchfully.eurder.dto.userdto.UserDto;
 //import com.switchfully.eurder.exception.AuthorizationException;
 //import com.switchfully.eurder.service.AuthorizationService;
 //import com.switchfully.eurder.service.UserService;
