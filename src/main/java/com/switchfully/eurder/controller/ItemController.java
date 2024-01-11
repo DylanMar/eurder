@@ -28,28 +28,30 @@ public class ItemController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(path = "/filter={filter}", produces = "application/json")
-    public List<ItemResupplyUrgencyDto> getItems(@RequestHeader(HttpHeaders.AUTHORIZATION) String authorization, @PathVariable String filter) {
-        if (!authorizationService.isAdmin(authorization)) {
-            throw new AuthorizationException("You are not authorized for this action");
-        }
+//    @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization,
+    public List<ItemResupplyUrgencyDto> getItems(@PathVariable String filter) {
+//        if (!authorizationService.isAdmin(authorization)) {
+//            throw new AuthorizationException("You are not authorized for this action");
+//        }
         return itemService.getItems(filter);
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping(produces = "application/json")
-    public List<ItemGroupDto> getItemsShippingToday(@RequestHeader(HttpHeaders.AUTHORIZATION) String authorization) {
-        if (!authorizationService.isAdmin(authorization)) {
-            throw new AuthorizationException("You are not authorized for this action");
-        }
-        return itemService.getItemsShippingToday();
-    }
+//    @ResponseStatus(HttpStatus.OK)
+//    @GetMapping(produces = "application/json")
+//    public List<ItemGroupDto> getItemsShippingToday(@RequestHeader(HttpHeaders.AUTHORIZATION) String authorization) {
+//        if (!authorizationService.isAdmin(authorization)) {
+//            throw new AuthorizationException("You are not authorized for this action");
+//        }
+//        return itemService.getItemsShippingToday();
+//    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = "application/json", produces = "application/json")
-    public ItemDto createItem(@RequestHeader(HttpHeaders.AUTHORIZATION) String authorization, @RequestBody CreateItemDto createItemDto) {
-        if (!authorizationService.isAdmin(authorization)) {
-            throw new AuthorizationException("You are not authorized for this action");
-        }
+//    public ItemDto createItem(@RequestHeader(HttpHeaders.AUTHORIZATION) String authorization, @RequestBody CreateItemDto createItemDto) {
+        public ItemDto createItem(@RequestBody CreateItemDto createItemDto) {
+//        if (!authorizationService.isAdmin(authorization)) {
+//            throw new AuthorizationException("You are not authorized for this action");
+//        }
         return itemService.createItem(createItemDto);
     }
 
